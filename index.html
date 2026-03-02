@@ -1,17 +1,40 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>SerieB Scanner – Protege tu economía</title>
+  <!-- SEO: Title tag (< 60 chars) prioritiza keyword de mayor volumen -->
+  <title>Verificador de Billetes Serie B | App Bolivia</title>
 
-  <!-- OpenGraph -->
-  <meta property="og:title" content="SerieB Scanner – Identifica billetes inhabilitados" />
-  <meta property="og:description" content="La herramienta de reconocimiento visual más rápida para el mercado boliviano. Detecta números de serie inhabilitados por el BCB." />
-  <meta property="og:image" content="https://placehold.co/1200x630/795548/ffffff?text=SerieB+Scanner" />
+  <!-- SEO: Meta Description (~155 chars) usando Breakout query, intent y CTA -->
+  <meta name="description"
+    content="¿Cómo verificar los billetes de la serie b? Descarga el verificador de billetes falsos e inhabilitados por el BCB en Bolivia. ¡Protege tu dinero hoy!" />
+
+  <!-- SEO: OpenGraph -->
+  <meta property="og:title" content="Verificador de Billetes Serie B | App Bolivia" />
+  <meta property="og:description"
+    content="¿Cómo verificar los billetes de la serie b? Descarga el verificador de billetes falsos e inhabilitados por el BCB en Bolivia. ¡Protege tu dinero hoy!" />
+  <meta property="og:image" content="https://placehold.co/1200x630/795548/ffffff?text=Verificador+Serie+B" />
   <meta property="og:type" content="website" />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="description" content="Descarga gratis SerieB Scanner y detecta billetes de la Serie B inhabilitados por el BCB." />
+
+  <!-- SEO Técnico: JSON-LD SoftwareApplication Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "SerieB Scanner",
+    "operatingSystem": "Android",
+    "applicationCategory": "UtilitiesApplication",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "BOB"
+    },
+    "description": "Aplicacion para verificar billetes de la serie b en Bolivia. Identificador rápido de billetes falsos e inhabilitados por el banco central de bolivia utilizando la cámara."
+  }
+  </script>
 
   <!-- Phosphor Icons CDN -->
   <script src="https://unpkg.com/@phosphor-icons/web@2.1.1/src/index.js"></script>
@@ -19,461 +42,819 @@
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,600;0,9..144,700;1,9..144,400&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,600;0,9..144,700;1,9..144,400&family=Instrument+Sans:wght@400;500;600&display=swap"
+    rel="stylesheet" />
 
   <style>
     :root {
-      --brown:     #795548;
-      --brown-lt:  #a1826f;
-      --brown-bg:  #f5ede8;
-      --orange:    #E65100;
+      --brown: #795548;
+      --brown-lt: #a1826f;
+      --brown-bg: #f5ede8;
+      --orange: #E65100;
       --orange-lt: #f07030;
       --orange-bg: #fff3ec;
-      --purple:    #6A1B9A;
+      --purple: #6A1B9A;
       --purple-lt: #8e3db8;
       --purple-bg: #f3eaf8;
+      --whatsapp: #25D366;
+      --whatsapp-lt: #34e073;
 
-      --ink:       #1a1208;
-      --ink-mid:   #4a3b2e;
-      --ink-soft:  #8a7060;
-      --line:      #e8ddd6;
-      --white:     #ffffff;
-      --bg:        #fdfaf8;
+      --ink: #1a1208;
+      --ink-mid: #4a3b2e;
+      --ink-soft: #8a7060;
+      --line: #e8ddd6;
+      --white: #ffffff;
+      --bg: #fdfaf8;
 
-      --r:  16px;
-      --rs: 10px;
+      --r: 20px;
+      --rs: 12px;
     }
 
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
 
     body {
       background: var(--bg);
       color: var(--ink);
       font-family: 'Instrument Sans', sans-serif;
-      font-size: 18px;
+      font-size: 20px;
+      /* UX: 20px legibility */
       line-height: 1.6;
       overflow-x: hidden;
     }
 
+    /* Accessibility utility */
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+
     /* ── NAV ── */
     nav {
-      position: sticky; top: 0; z-index: 100;
-      background: rgba(253,250,248,.93);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(253, 250, 248, .93);
       backdrop-filter: blur(14px);
       border-bottom: 1px solid var(--line);
-      padding: 16px 24px;
-      display: flex; align-items: center; justify-content: space-between;
+      padding: 20px 48px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
     }
+
+    @media (max-width: 768px) {
+      nav {
+        padding: 16px 20px;
+      }
+    }
+
     .nav-logo {
       font-family: 'Fraunces', serif;
-      font-size: 1.25rem; font-weight: 700;
-      color: var(--brown); letter-spacing: -.01em;
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--brown);
+      letter-spacing: -.01em;
     }
-    .nav-logo span { color: var(--ink); font-weight: 300; }
+
+    .nav-logo span {
+      color: var(--ink);
+      font-weight: 300;
+    }
+
     .nav-pill {
-      font-size: .78rem; font-weight: 600; letter-spacing: .05em; text-transform: uppercase;
-      background: var(--brown-bg); color: var(--brown);
-      border: 1px solid rgba(121,85,72,.2);
-      padding: 5px 14px; border-radius: 99px;
+      font-size: .85rem;
+      font-weight: 600;
+      letter-spacing: .05em;
+      text-transform: uppercase;
+      background: var(--brown-bg);
+      color: var(--brown);
+      border: 1px solid rgba(121, 85, 72, .2);
+      padding: 6px 16px;
+      border-radius: 99px;
     }
 
     /* ── WRAP ── */
-    .wrap { max-width: 780px; margin: 0 auto; padding: 0 22px; }
+    .wrap {
+      max-width: 1250px;
+      margin: 0 auto;
+      padding: 0 48px;
+    }
+
+    @media (max-width: 768px) {
+      .wrap {
+        padding: 0 20px;
+      }
+    }
 
     /* ── HERO ── */
-    .hero { padding: 80px 0 68px; }
-    .hero-label {
-      display: inline-flex; align-items: center; gap: 8px;
-      font-size: .88rem; font-weight: 600; letter-spacing: .05em; text-transform: uppercase;
-      color: var(--orange); margin-bottom: 28px;
+    .hero {
+      padding: 100px 0 80px;
+      text-align: center;
     }
+
+    @media (max-width: 768px) {
+      .hero {
+        padding: 60px 0 40px;
+      }
+    }
+
+    .hero-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: .95rem;
+      font-weight: 600;
+      letter-spacing: .05em;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 28px;
+    }
+
     .pulse-dot {
-      width: 8px; height: 8px; border-radius: 50%; background: var(--orange);
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--orange);
       animation: blink 2s ease-in-out infinite;
     }
-    @keyframes blink { 0%,100%{opacity:1} 50%{opacity:.2} }
+
+    @keyframes blink {
+
+      0%,
+      100% {
+        opacity: 1
+      }
+
+      50% {
+        opacity: .2
+      }
+    }
 
     h1 {
       font-family: 'Fraunces', serif;
-      font-size: clamp(2.5rem, 8vw, 3.8rem);
-      font-weight: 700; line-height: 1.07; letter-spacing: -.03em;
-      color: var(--ink); margin-bottom: 24px;
+      font-size: clamp(2.8rem, 8vw, 4.2rem);
+      font-weight: 700;
+      line-height: 1.07;
+      letter-spacing: -.03em;
+      color: var(--ink);
+      margin-bottom: 24px;
     }
-    h1 em { font-style: italic; font-weight: 400; color: var(--brown); }
+
+    h1 em {
+      font-style: italic;
+      font-weight: 400;
+      color: var(--brown);
+    }
 
     .hero-sub {
-      font-size: 1.15rem; color: var(--ink-mid);
-      max-width: 560px; margin-bottom: 46px; line-height: 1.68;
+      font-size: 1.3rem;
+      color: var(--ink-mid);
+      max-width: 800px;
+      margin: 0 auto 46px;
+      line-height: 1.68;
     }
 
     /* ── DOWNLOAD BUTTON ── */
     .btn-dl {
-      display: inline-flex; align-items: center; gap: 12px;
-      background: var(--brown); color: #fff;
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      background: var(--brown);
+      color: #fff;
       font-family: 'Instrument Sans', sans-serif;
-      font-size: 1.05rem; font-weight: 600;
-      padding: 18px 34px; border-radius: 14px;
+      font-size: 1.2rem;
+      font-weight: 600;
+      padding: 20px 40px;
+      border-radius: 16px;
       text-decoration: none;
-      box-shadow: 0 4px 24px rgba(121,85,72,.28);
+      box-shadow: 0 4px 24px rgba(121, 85, 72, .28);
       transition: background .18s, transform .15s, box-shadow .18s;
     }
-    .btn-dl:hover { background: var(--brown-lt); transform: translateY(-2px); box-shadow: 0 8px 32px rgba(121,85,72,.35); }
-    .btn-dl:active { transform: translateY(0); }
-    .btn-dl i { font-size: 1.4rem; }
+
+    .btn-dl:hover {
+      background: var(--brown-lt);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 32px rgba(121, 85, 72, .35);
+    }
+
+    .btn-dl i {
+      font-size: 1.6rem;
+    }
 
     .dl-note {
-      display: flex; align-items: center; gap: 7px;
-      font-size: .88rem; color: var(--ink-soft); margin-top: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 7px;
+      font-size: 1rem;
+      color: var(--ink-soft);
+      margin-top: 18px;
+      margin-bottom: 40px;
     }
-    .dl-note i { color: var(--brown); font-size: 1rem; }
+
+    .dl-note i {
+      color: var(--brown);
+      font-size: 1.2rem;
+    }
+
+    /* ── CHIPS (HERO) ── */
+    .hero-chips {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      justify-content: center;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .chip {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: .95rem;
+      font-weight: 500;
+      color: var(--ink-mid);
+      background: var(--white);
+      border: 1px solid var(--line);
+      padding: 10px 20px;
+      border-radius: 99px;
+    }
+
+    .chip i {
+      font-size: 1.2rem;
+    }
+
+    .chip.cb i {
+      color: var(--brown);
+    }
+
+    .chip.co i {
+      color: var(--orange);
+    }
+
+    .chip.cp i {
+      color: var(--purple);
+    }
 
     /* ── DIVIDER ── */
-    .divider { height: 1px; background: var(--line); margin: 68px 0; }
+    .divider {
+      height: 1px;
+      background: var(--line);
+      margin: 80px 0;
+    }
 
     /* ── SECTION LABELS ── */
     .sec-tag {
-      font-size: .82rem; font-weight: 600; letter-spacing: .07em; text-transform: uppercase;
-      color: var(--ink-soft); margin-bottom: 10px;
+      font-size: .9rem;
+      font-weight: 600;
+      letter-spacing: .07em;
+      text-transform: uppercase;
+      color: var(--ink-soft);
+      margin-bottom: 12px;
     }
-    .sec-title {
-      font-family: 'Fraunces', serif;
-      font-size: clamp(1.7rem, 4vw, 2.3rem);
-      font-weight: 600; letter-spacing: -.02em;
-      color: var(--ink); line-height: 1.15; margin-bottom: 14px;
-    }
-    .sec-body { font-size: 1rem; color: var(--ink-mid); line-height: 1.72; }
 
-    /* ── TWO-COLUMN GRID ── */
+    h2.sec-title {
+      font-family: 'Fraunces', serif;
+      font-size: clamp(2rem, 4vw, 2.6rem);
+      font-weight: 600;
+      letter-spacing: -.02em;
+      color: var(--ink);
+      line-height: 1.15;
+      margin-bottom: 18px;
+    }
+
+    h3.sec-title-small {
+      font-family: 'Instrument Sans', sans-serif;
+      font-size: 1.15rem;
+      font-weight: 600;
+      color: var(--ink);
+      margin-bottom: 4px;
+    }
+
+    .sec-body {
+      font-size: 1.1rem;
+      color: var(--ink-mid);
+      line-height: 1.72;
+    }
+
+    /* ── GRID ── */
     .mid-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 52px; align-items: start;
+      gap: 60px;
+      align-items: start;
+      margin-bottom: 80px;
     }
-    @media (max-width: 600px) { .mid-grid { grid-template-columns: 1fr; gap: 56px; } }
+
+    @media (max-width: 1000px) {
+      .mid-grid {
+        grid-template-columns: 1fr;
+        gap: 32px;
+      }
+    }
 
     /* ── TIMELINE ── */
-    .tl { margin-top: 32px; display: flex; flex-direction: column; position: relative; }
-    .tl::before {
-      content: ''; position: absolute;
-      left: 17px; top: 10px; bottom: 10px; width: 1.5px;
-      background: linear-gradient(to bottom, var(--orange) 55%, var(--line) 100%);
-    }
-    .tl-item { display: flex; gap: 18px; align-items: flex-start; padding-bottom: 30px; position: relative; }
-    .tl-item:last-child { padding-bottom: 0; }
-    .tl-dot {
-      flex-shrink: 0; width: 36px; height: 36px; border-radius: 50%;
-      display: flex; align-items: center; justify-content: center; z-index: 1;
-    }
-    .tl-dot i { font-size: 1rem; }
-    .tl-dot.done   { background: var(--brown); color: #fff; }
-    .tl-dot.active {
-      background: var(--white); border: 2px solid var(--orange); color: var(--orange);
-      animation: ring 2.5s ease-in-out infinite;
-    }
-    @keyframes ring { 0%,100%{box-shadow:0 0 0 4px rgba(230,81,0,.1)} 50%{box-shadow:0 0 0 9px rgba(230,81,0,.03)} }
-    .tl-dot.pending { background: var(--white); border: 1.5px solid var(--line); color: var(--ink-soft); }
-    .tl-body { padding-top: 7px; }
-    .tl-name { font-size: 1rem; font-weight: 600; color: var(--ink); }
-    .tl-desc { font-size: .88rem; color: var(--ink-soft); margin-top: 3px; line-height: 1.5; }
-
-    .prog-wrap { margin-top: 26px; }
-    .prog-lbl { display: flex; justify-content: space-between; font-size: .8rem; color: var(--ink-soft); margin-bottom: 8px; }
-    .prog-track { height: 7px; background: var(--line); border-radius: 99px; overflow: visible; position: relative; }
-    .prog-fill {
-      height: 100%; width: 52%; border-radius: 99px;
-      background: linear-gradient(90deg, var(--brown), var(--orange));
+    .tl {
+      margin-top: 32px;
+      display: flex;
+      flex-direction: column;
       position: relative;
     }
-    .prog-fill::after {
-      content: ''; position: absolute; right: -5px; top: 50%; transform: translateY(-50%);
-      width: 15px; height: 15px; border-radius: 50%;
-      background: var(--orange); box-shadow: 0 0 0 5px rgba(230,81,0,.15);
+
+    .tl::before {
+      content: '';
+      position: absolute;
+      left: 17px;
+      top: 10px;
+      bottom: 10px;
+      width: 1.5px;
+      background: linear-gradient(to bottom, var(--orange) 75%, var(--line) 100%);
     }
 
-    /* ── STEPS ── */
-    .steps { margin-top: 32px; display: flex; flex-direction: column; gap: 14px; }
+    .tl-item {
+      display: flex;
+      gap: 18px;
+      align-items: flex-start;
+      padding-bottom: 30px;
+      position: relative;
+    }
+
+    .tl-item:last-child {
+      padding-bottom: 0;
+    }
+
+    .tl-dot {
+      flex-shrink: 0;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1;
+    }
+
+    .tl-dot.done {
+      background: var(--brown);
+      color: #fff;
+    }
+
+    .tl-dot.active {
+      background: var(--white);
+      border: 2px solid var(--orange);
+      color: var(--orange);
+      animation: ring 2.5s ease-in-out infinite;
+    }
+
+    .tl-dot.pending {
+      background: var(--white);
+      border: 1.5px solid var(--line);
+      color: var(--ink-soft);
+    }
+
+    @keyframes ring {
+
+      0%,
+      100% {
+        box-shadow: 0 0 0 4px rgba(230, 81, 0, .1)
+      }
+
+      50% {
+        box-shadow: 0 0 0 9px rgba(230, 81, 0, .03)
+      }
+    }
+
+    .tl-body {
+      padding-top: 7px;
+    }
+
+    .tl-desc {
+      font-size: .95rem;
+      color: var(--ink-soft);
+      margin-top: 4px;
+      line-height: 1.5;
+    }
+
+    /* ── STEPS & VIDEO ── */
+    .tutorial-section {
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: var(--r);
+      padding: 60px;
+      text-align: center;
+    }
+
+    @media (max-width: 768px) {
+      .tutorial-section {
+        padding: 40px 20px;
+      }
+    }
+
+    .steps-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 24px;
+      margin: 40px 0;
+      text-align: left;
+    }
+
     .step {
-      display: flex; gap: 16px; align-items: flex-start;
-      background: var(--white); border: 1px solid var(--line);
-      border-radius: var(--r); padding: 20px;
-      transition: border-color .2s, box-shadow .2s;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      background: var(--bg);
+      border: 1px solid var(--line);
+      border-radius: var(--r);
+      padding: 24px;
     }
-    .step:hover { border-color: rgba(121,85,72,.28); box-shadow: 0 4px 20px rgba(121,85,72,.07); }
+
     .sicon {
-      flex-shrink: 0; width: 46px; height: 46px; border-radius: 13px;
-      display: flex; align-items: center; justify-content: center;
-    }
-    .sicon i { font-size: 1.45rem; }
-    .sicon.s1 { background: var(--brown-bg); }  .sicon.s1 i { color: var(--brown); }
-    .sicon.s2 { background: var(--orange-bg); } .sicon.s2 i { color: var(--orange); }
-    .sicon.s3 { background: var(--purple-bg); } .sicon.s3 i { color: var(--purple); }
-
-    .step-lbl { font-size: .72rem; font-weight: 600; letter-spacing: .07em; text-transform: uppercase; color: var(--ink-soft); margin-bottom: 3px; }
-    .step-name { font-size: 1rem; font-weight: 600; color: var(--ink); }
-    .step-desc { font-size: .9rem; color: var(--ink-soft); margin-top: 3px; line-height: 1.5; }
-    .step-tip {
-      font-size: .82rem; margin-top: 8px; padding: 8px 12px;
-      background: var(--orange-bg); border-left: 2.5px solid var(--orange);
-      border-radius: 0 6px 6px 0; color: var(--ink-mid);
+      width: 50px;
+      height: 50px;
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.6rem;
     }
 
-    /* ── TESTERS ── */
-    .tester-card {
-      background: var(--white); border: 1px solid var(--line);
-      border-radius: 20px; padding: 36px 28px;
+    .sicon.s1 {
+      background: var(--brown-bg);
+      color: var(--brown);
     }
-    .tnum { font-family: 'Fraunces', serif; font-size: 3.5rem; font-weight: 700; line-height: 1; color: var(--purple); }
-    .tnum-lbl { font-size: .9rem; color: var(--ink-soft); margin-top: 5px; margin-bottom: 22px; }
-    .slots { display: flex; gap: 5px; flex-wrap: wrap; margin-bottom: 24px; }
-    .sl { width: 27px; height: 7px; border-radius: 99px; background: var(--line); transition: background .3s; }
-    .sl.taken { background: var(--purple-lt); }
 
-    .email-row { display: flex; gap: 10px; margin-top: 16px; }
-    .email-inp {
-      flex: 1; background: var(--bg); border: 1.5px solid var(--line);
-      border-radius: var(--rs); padding: 14px 16px;
-      color: var(--ink); font-family: 'Instrument Sans', sans-serif;
-      font-size: .95rem; outline: none; transition: border-color .2s;
+    .sicon.s2 {
+      background: var(--orange-bg);
+      color: var(--orange);
     }
-    .email-inp:focus { border-color: var(--purple); }
-    .email-inp::placeholder { color: var(--ink-soft); }
-    .btn-join {
-      background: var(--purple); color: #fff;
-      font-family: 'Instrument Sans', sans-serif; font-size: .95rem; font-weight: 600;
-      padding: 14px 22px; border-radius: var(--rs); border: none;
-      cursor: pointer; white-space: nowrap;
-      transition: background .15s, transform .15s;
-    }
-    .btn-join:hover { background: var(--purple-lt); transform: translateY(-1px); }
-    .form-note { font-size: .82rem; color: var(--ink-soft); margin-top: 10px; display: flex; align-items: center; gap: 6px; }
-    .form-note i { color: var(--purple); font-size: 1rem; }
-    .success-msg { display: none; color: var(--purple); font-size: .95rem; font-weight: 500; margin-top: 14px; }
 
-    /* ── CHIPS ── */
-    .chips { display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; margin-bottom: 68px; }
-    .chip {
-      display: flex; align-items: center; gap: 7px;
-      font-size: .85rem; color: var(--ink-mid);
-      background: var(--white); border: 1px solid var(--line);
-      padding: 9px 16px; border-radius: 99px;
+    .sicon.s3 {
+      background: var(--purple-bg);
+      color: var(--purple);
     }
-    .chip i { font-size: 1rem; }
-    .chip.cb i { color: var(--brown); }
-    .chip.co i { color: var(--orange); }
-    .chip.cp i { color: var(--purple); }
+
+    .step-desc {
+      font-size: 1rem;
+      color: var(--ink-soft);
+      margin-top: 4px;
+    }
+
+    .video-container {
+      position: relative;
+      padding-bottom: 56.25%;
+      height: 0;
+      overflow: hidden;
+      border-radius: var(--r);
+      margin-top: 24px;
+      background: #000;
+      border: 1px solid var(--line);
+    }
+
+    .video-container iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+
+    /* ── WHATSAPP CARD ── */
+    .wa-card {
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: var(--r);
+      padding: 40px 32px;
+      border-top: 4px solid var(--whatsapp);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .wa-badge {
+      display: inline-flex;
+      align-items: center;
+      align-self: flex-start;
+      gap: 8px;
+      background: #e9f9ee;
+      color: var(--whatsapp);
+      padding: 6px 14px;
+      border-radius: 50px;
+      font-size: .85rem;
+      font-weight: 700;
+      margin-bottom: 20px;
+    }
+
+    .btn-wa {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      background: var(--whatsapp);
+      color: #fff;
+      text-decoration: none;
+      padding: 18px;
+      border-radius: 14px;
+      font-weight: 700;
+      font-size: 1.1rem;
+      margin-top: 24px;
+      transition: background .2s, transform .2s;
+    }
+
+    .btn-wa:hover {
+      background: var(--whatsapp-lt);
+      transform: translateY(-2px);
+    }
 
     /* ── FOOTER ── */
-    footer { border-top: 1px solid var(--line); padding: 36px 22px; text-align: center; }
-    footer p { font-size: .85rem; color: var(--ink-soft); line-height: 1.75; }
-    footer a { color: var(--brown); text-decoration: none; }
+    footer {
+      border-top: 1px solid var(--line);
+      padding: 60px 48px;
+      text-align: center;
+    }
 
-    /* ── FADE ── */
-    .fade { opacity: 0; transform: translateY(18px); transition: opacity .55s ease, transform .55s ease; }
-    .fade.visible { opacity: 1; transform: translateY(0); }
+    @media (max-width: 768px) {
+      footer {
+        padding: 40px 20px;
+      }
+    }
+
+    footer p {
+      font-size: 1rem;
+      color: var(--ink-soft);
+    }
+
+    footer a {
+      color: var(--brown);
+      text-decoration: none;
+    }
+
+    /* ── SCROLL ANIMACIONES ── */
+    .scroll-section {
+      opacity: 0;
+    }
+
+    @keyframes reveal-left {
+      0% {
+        opacity: 0;
+        transform: translateX(-80px);
+      }
+
+      100% {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    @keyframes reveal-right {
+      0% {
+        opacity: 0;
+        transform: translateX(80px);
+      }
+
+      100% {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    section.scroll-section:nth-of-type(odd).is-visible {
+      animation: reveal-left 1s ease-out forwards;
+    }
+
+    section.scroll-section:nth-of-type(even).is-visible {
+      animation: reveal-right 1s ease-out forwards;
+    }
   </style>
 </head>
+
 <body>
 
-<!-- NAV -->
-<nav>
-  <div class="nav-logo">SerieB<span>Scanner</span></div>
-  <div class="nav-pill">v1.0 Bolivia</div>
-</nav>
-
-<!-- HERO -->
-<section class="hero">
-  <div class="wrap">
-    <div class="hero-label">
-      <div class="pulse-dot"></div>
-      Disponible ahora — Lunes 3 de marzo
+  <!-- NAV -->
+  <nav>
+    <div class="nav-logo">SerieB<span>Scanner</span></div>
+    <div class="nav-pill">
+      <!-- SEO: LSI Context -->
+      <span class="sr-only">App de seguridad para dinero en </span>Efectivo
     </div>
-    <h1>Protege tu economía:<br/><em>Identifica billetes</em><br/>de la Serie B.</h1>
-    <p class="hero-sub">La herramienta de reconocimiento visual más rápida para el mercado boliviano. Detecta números de serie inhabilitados por el BCB mediante la cámara de tu celular.</p>
+  </nav>
 
-    <a href="https://github.com/TU_USUARIO/TU_REPO/releases/download/v1.0/serieb-scanner-v1.0.apk" class="btn-dl" id="downloadBtn">
-      <i class="ph-bold ph-android-logo"></i>
-      Descargar APK Oficial (v1.0)
+  <!-- HERO -->
+  <section class="hero scroll-section">
+    <div class="wrap">
+      <div class="hero-label">
+        <div class="pulse-dot"></div>
+        Actualizado hoy — Lunes 3 de marzo
+      </div>
+
+      <!-- SEO: H1 Principal (Keyword principal de Alto Volumen y Breakout) -->
+      <h1>Verificador de billetes<br /><em>Serie B</em></h1>
+
+      <!-- SEO: Inyección de LSI y top volume (bcb verificador de billetes, billetes bolivianos, comercio) -->
+      <p class="hero-sub">La <strong>aplicación para verificar billetes</strong> más confiable para el comercio en
+        Bolivia. Funciona como un <strong>identificador de billetes falsos</strong> e inhabilitados por el banco central
+        (BCB). Protege tus ventas al instante.</p>
+
+      <!-- UX/SEO: Botón principal grande y legible -->
+      <a href="https://github.com/TU_USUARIO/TU_REPO/releases/download/v1.0/serieb-scanner-v1.0.apk" class="btn-dl"
+        title="Descargar la app para verificar billetes en Bolivia">
+        <i class="ph-bold ph-android-logo" aria-hidden="true"></i>
+        Descargar Verificador BCB
+      </a>
+
+      <div class="dl-note">
+        <i class="ph ph-seal-check" aria-hidden="true"></i>
+        <span>APK seguro y gratuito &middot; 24.5 MB &middot; Android 6.0+</span>
+      </div>
+
+      <!-- SEO: Chips con palabras clave LSI y de Volumen -->
+      <div class="hero-chips">
+        <div class="chip cb">
+          <i class="ph-fill ph-shield-check" aria-hidden="true"></i>
+          <span>Mayor Seguridad</span>
+        </div>
+        <div class="chip co">
+          <i class="ph-bold ph-prohibit" aria-hidden="true"></i>
+          <!-- KW LSI -->
+          <span>Billetes inhabilitados en bolivia</span>
+        </div>
+        <div class="chip cp">
+          <i class="ph ph-device-mobile-camera" aria-hidden="true"></i>
+          <!-- KW secundaria -->
+          <span>Reconocimiento por cámara</span>
+        </div>
+        <div class="chip cb">
+          <i class="ph ph-bank" aria-hidden="true"></i>
+          <!-- KW: bcb -->
+          <span>Datos del BCB</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- MID GRID: CERTIFICACIÓN (H2 FAQ) + WHATSAPP -->
+  <section class="wrap scroll-section">
+    <div class="mid-grid">
+
+      <!-- COL 1: CERTIFICACIÓN -->
+      <div>
+        <div class="sec-tag">Contexto y Publicación</div>
+        <!-- SEO: H2 (Rising Query FAQ format) -->
+        <h2 class="sec-title">¿Qué billetes no sirven en bolivia?</h2>
+        <!-- SEO LSI injection (serie de billetes inhabilitados) -->
+        <p class="sec-body">El banco central de bolivia emitió un listado de series inhabilitadas tras incidentes
+          recientes. Nuestra app <strong>verificador de billetes bcb</strong> te ayuda a detectarlos mientras
+          completamos el proceso de publicación oficial en Google Play.</p>
+
+        <div class="tl">
+          <div class="tl-item">
+            <div class="tl-dot done"><i class="ph-bold ph-check" aria-hidden="true"></i></div>
+            <div class="tl-body">
+              <h3 class="sec-title-small">Desarrollo de la aplicación concluido</h3>
+              <div class="tl-desc">Herramienta base lista para auditar billetes de bolivia de forma segura.</div>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot active"><i class="ph-bold ph-arrow-clockwise" aria-hidden="true"></i></div>
+            <div class="tl-body">
+              <h3 class="sec-title-small">Revisión de la Play Store</h3>
+              <div class="tl-desc">Periodo de prueba institucional en curso.</div>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot pending"><i class="ph ph-clock" aria-hidden="true"></i></div>
+            <div class="tl-body">
+              <h3 class="sec-title-small">Descarga Directa</h3>
+              <!-- SEO Keyword: verificador de billetes serie b -->
+              <div class="tl-desc">El verificador de billetes serie b oficial estará en tienda en aprox. 2 semanas.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- COL 2: WHATSAPP -->
+      <div class="wa-card">
+        <div class="wa-badge">
+          <i class="ph-fill ph-users-three" aria-hidden="true"></i> Comunidad de Testers
+        </div>
+        <h2 class="sec-title" style="font-size: 1.8rem;">¿Quieres apoyarnos?</h2>
+        <!-- SEO Keyword: verificacion de billetes -->
+        <p class="sec-body">Únete a nuestro grupo de WhatsApp para probar beta la <strong>verificacion de
+            billetes</strong> y ayudar a otros negociantes a evitar estafas.</p>
+        <a href="https://chat.whatsapp.com/TU_GRUPO" class="btn-wa"
+          title="Únete a la comunidad del verificador de billetes serie b">
+          <i class="ph-fill ph-whatsapp-logo" aria-hidden="true"></i> Unirse a WhatsApp
+        </a>
+        <p style="font-size: .85rem; color: var(--ink-soft); margin-top: 16px; text-align: center;">Últimos cupos para
+          pruebas disponibles.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- FULL WIDTH TUTORIAL -->
+  <section class="wrap scroll-section">
+    <div class="tutorial-section">
+      <div class="sec-tag">Tutorial de Uso</div>
+      <!-- SEO H2 Breakout Query Formatted -->
+      <h2 class="sec-title">¿Cómo verificar los billetes de la serie b?</h2>
+      <p class="sec-body" style="max-width: 600px; margin: 0 auto;">La detección es inmediata. Sigue el video tutorial
+        para aprender a utilizar el <strong>verificador de billetes bcb</strong> correctamente.</p>
+
+      <div class="steps-grid">
+        <div class="step">
+          <div class="sicon s1"><i class="ph-bold ph-download-simple" aria-label="Paso 1: Descargar"></i></div>
+          <div>
+            <h3 class="sec-title-small">Descarga el APK</h3>
+            <!-- LSI: verificador -->
+            <div class="step-desc">El instalador del <strong>verificador</strong> se guardará en tu móvil.</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="sicon s2"><i class="ph-bold ph-lock-open" aria-label="Paso 2: Permisos"></i></div>
+          <div>
+            <h3 class="sec-title-small">Habilita Fuentes</h3>
+            <div class="step-desc">Ve a Seguridad → "Instalar aplicaciones desconocidas".</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="sicon s3"><i class="ph-bold ph-scan" aria-label="Paso 3: Escaneo"></i></div>
+          <div>
+            <h3 class="sec-title-small">Escanea la serie b</h3>
+            <div class="step-desc">Enfoca con tu cámara para realizar la <strong>verificación de billetes</strong>.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="video-container">
+        <!-- SEO video iframe -->
+        <iframe src="https://www.youtube.com/embed/VIDEO_ID"
+          title="Tutorial en video: Cómo usar la aplicacion para verificar billetes en Bolivia"
+          aria-label="Reproductor de video de YouTube con tutorial" allowfullscreen></iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECOND CTA -->
+  <div class="divider"></div>
+  <section class="wrap scroll-section" style="text-align:center; margin-bottom:100px;">
+    <!-- SEO Keyword -->
+    <h2 class="sec-title">Empieza a usar el Identificador de billetes</h2>
+    <a href="https://github.com/TU_USUARIO/TU_REPO/releases/download/v1.0/serieb-scanner-v1.0.apk" class="btn-dl">
+      <i class="ph-bold ph-android-logo" aria-hidden="true"></i> Descargar Verificador BCB
     </a>
-    <div class="dl-note">
-      <i class="ph ph-seal-check"></i>
-      APK firmado digitalmente &middot; 24.5 MB &middot; Android 6.0+
+    <!-- LSI context -->
+    <p style="font-size:1rem; color:var(--ink-soft); margin-top:16px;">Vigila tus cobros en efectivo contra la
+      <strong>serie de billetes inhabilitados</strong>.
+    </p>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="wrap">
+      <p><strong>Verificador de billetes serie b</strong> &middot; Bolivia &middot; 2026</p>
+      <!-- Disclaimer LSI (Banco central, BCB, bolivianos) -->
+      <p style="margin-top:10px; font-size: .95rem;">Esta herramienta informática no representa legalmente al
+        <strong>Banco Nacional de Bolivia</strong> ni al <strong>Banco Central de Bolivia (BCB)</strong>.<br />Consume
+        únicamente el set de datos público para detectar <em>que serie de billetes no valen en bolivia</em>.
+      </p>
     </div>
-  </div>
-</section>
+  </footer>
 
-<div class="divider"></div>
+  <script>
+    const obs = new IntersectionObserver((entries, observer) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('is-visible');
+          observer.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.15 });
 
-<!-- MID SECTION: CERTIFICACIÓN + PASOS (mismo nivel) -->
-<section class="wrap fade" style="margin-bottom:0;">
-  <div class="mid-grid">
-
-    <!-- COL 1: CERTIFICACIÓN -->
-    <div>
-      <div class="sec-tag">Proceso de publicación</div>
-      <div class="sec-title">Estamos en certificación</div>
-      <p class="sec-body">Google Play requiere <strong>14 días de pruebas internas con 20 testers</strong> antes de habilitar la descarga pública. Para no hacer esperar a nadie ante la urgencia de hoy, liberamos la versión directa firmada digitalmente.</p>
-
-      <div class="tl">
-        <div class="tl-item">
-          <div class="tl-dot done"><i class="ph-bold ph-check"></i></div>
-          <div class="tl-body">
-            <div class="tl-name">Desarrollo completo</div>
-            <div class="tl-desc">App construida, probada y firmada con clave oficial.</div>
-          </div>
-        </div>
-        <div class="tl-item">
-          <div class="tl-dot active"><i class="ph-bold ph-arrow-clockwise"></i></div>
-          <div class="tl-body">
-            <div class="tl-name">Revisión de Google Play</div>
-            <div class="tl-desc">Periodo obligatorio de 14 días con 20 testers internos.</div>
-          </div>
-        </div>
-        <div class="tl-item">
-          <div class="tl-dot pending"><i class="ph ph-clock"></i></div>
-          <div class="tl-body">
-            <div class="tl-name">Lanzamiento global</div>
-            <div class="tl-desc">Descarga directa desde Play Store en aprox. 2 semanas.</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="prog-wrap">
-        <div class="prog-lbl"><span>Inicio</span><span>Play Store</span></div>
-        <div class="prog-track"><div class="prog-fill"></div></div>
-      </div>
-    </div>
-
-    <!-- COL 2: PASOS -->
-    <div>
-      <div class="sec-tag">Guía rápida</div>
-      <div class="sec-title">Instala en 3 pasos simples</div>
-      <p class="sec-body">El proceso toma menos de 2 minutos en cualquier Android.</p>
-
-      <div class="steps">
-        <div class="step">
-          <div class="sicon s1"><i class="ph-bold ph-download-simple"></i></div>
-          <div>
-            <div class="step-lbl">Paso 1</div>
-            <div class="step-name">Descarga el archivo APK</div>
-            <div class="step-desc">El archivo se guardará en tu carpeta de Descargas.</div>
-          </div>
-        </div>
-        <div class="step">
-          <div class="sicon s2"><i class="ph-bold ph-lock-open"></i></div>
-          <div>
-            <div class="step-lbl">Paso 2</div>
-            <div class="step-name">Habilita fuentes desconocidas</div>
-            <div class="step-desc">Ajustes → Seguridad → Instalar apps desconocidas.</div>
-            <div class="step-tip">En Android 8+ el sistema lo solicita automáticamente al abrir el APK.</div>
-          </div>
-        </div>
-        <div class="step">
-          <div class="sicon s3"><i class="ph-bold ph-scan"></i></div>
-          <div>
-            <div class="step-lbl">Paso 3</div>
-            <div class="step-name">Abre e inicia el escaneo</div>
-            <div class="step-desc">Instala la app y apunta la cámara al número de serie del billete.</div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-  </div>
-</section>
-
-<div class="divider"></div>
-
-<!-- TESTERS -->
-<section class="wrap fade" style="margin-bottom:64px;">
-  <div class="sec-tag">Programa de testers</div>
-  <div class="sec-title">Quieres ayudarnos</div>
-  <p class="sec-body" style="max-width:540px; margin-bottom:28px;">Únete al programa oficial de Google Play. Tu participación acelera el proceso de revisión y nos ayuda a cumplir el requisito de los 20 testers.</p>
-
-  <div class="tester-card">
-    <div class="tnum" id="testerCount">7</div>
-    <div class="tnum-lbl">testers registrados — quedan <span id="slotsLeft">13</span> lugares disponibles</div>
-    <div class="slots" id="slotsBar"></div>
-    <p style="font-size:.95rem; color:var(--ink-mid); max-width:460px; margin-bottom:4px;">Deja tu correo para recibir la invitación oficial de Google Play cuando esté disponible.</p>
-    <div class="email-row">
-      <input type="email" class="email-inp" id="emailInput" placeholder="tu@correo.com" />
-      <button class="btn-join" onclick="joinTesters()">Unirme</button>
-    </div>
-    <div class="form-note">
-      <i class="ph-fill ph-shield-check"></i>
-      Sin spam. Solo recibirás el enlace de invitación de Google Play.
-    </div>
-    <div class="success-msg" id="successMsg">
-      <i class="ph-fill ph-check-circle" style="vertical-align:middle; margin-right:5px;"></i>
-      Listo. Te avisamos cuando la prueba esté disponible.
-    </div>
-  </div>
-</section>
-
-<!-- TRUST CHIPS -->
-<div class="wrap fade">
-  <div class="chips">
-    <div class="chip cb"><i class="ph-fill ph-seal-check"></i> APK firmado digitalmente</div>
-    <div class="chip co"><i class="ph-bold ph-prohibit"></i> Sin permisos innecesarios</div>
-    <div class="chip cp"><i class="ph ph-device-mobile-camera"></i> Solo usa la cámara</div>
-    <div class="chip cb"><i class="ph ph-bank"></i> Datos oficiales del BCB</div>
-    <div class="chip co"><i class="ph ph-globe-hemisphere-west"></i> Hecho en Bolivia</div>
-  </div>
-</div>
-
-<!-- SECOND CTA -->
-<div class="wrap fade" style="text-align:center; margin-bottom:84px;">
-  <a href="https://github.com/TU_USUARIO/TU_REPO/releases/download/v1.0/serieb-scanner-v1.0.apk" class="btn-dl">
-    <i class="ph-bold ph-android-logo"></i>
-    Descargar APK Oficial (v1.0)
-  </a>
-  <p style="font-size:.9rem; color:var(--ink-soft); margin-top:12px;">Gratis — Sin registro — Sin publicidad</p>
-</div>
-
-<!-- FOOTER -->
-<footer>
-  <div class="wrap">
-    <p>SerieB Scanner · Bolivia · 2025 · <a href="mailto:contacto@seriebscanner.bo">contacto@seriebscanner.bo</a></p>
-    <p style="margin-top:6px;">Esta aplicación no es un producto oficial del BCB.<br/>Utiliza la base de datos pública de billetes inhabilitados de la Serie B.</p>
-  </div>
-</footer>
-
-<script>
-  // ── SLOTS BAR ──
-  const TOTAL = 20;
-  let taken = 7;
-  function renderSlots() {
-    const bar = document.getElementById('slotsBar');
-    bar.innerHTML = '';
-    for (let i = 0; i < TOTAL; i++) {
-      const s = document.createElement('div');
-      s.className = 'sl' + (i < taken ? ' taken' : '');
-      bar.appendChild(s);
-    }
-    document.getElementById('testerCount').textContent = taken;
-    document.getElementById('slotsLeft').textContent = TOTAL - taken;
-  }
-  renderSlots();
-
-  // ── JOIN ──
-  function joinTesters() {
-    const inp = document.getElementById('emailInput');
-    if (!inp.value.trim() || !inp.value.includes('@')) {
-      inp.style.borderColor = 'var(--orange)'; inp.focus(); return;
-    }
-    inp.style.borderColor = 'var(--purple)';
-    if (taken < TOTAL) { taken++; renderSlots(); }
-    document.querySelector('.email-row').style.display = 'none';
-    document.querySelector('.form-note').style.display = 'none';
-    document.getElementById('successMsg').style.display = 'block';
-    // TODO: conectar con tu backend / Formspree / Mailchimp
-  }
-
-  // ── SCROLL FADE IN ──
-  const obs = new IntersectionObserver(entries => {
-    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
-  }, { threshold: 0.08 });
-  document.querySelectorAll('.fade').forEach(el => obs.observe(el));
-</script>
+    document.querySelectorAll('.scroll-section').forEach(el => obs.observe(el));
+  </script>
 </body>
+
 </html>
