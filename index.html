@@ -292,18 +292,24 @@
     .chip {
       display: flex;
       align-items: center;
-      gap: 8px;
-      font-size: .95rem;
+      gap: 10px;
+      font-size: 1.1rem;
       font-weight: 500;
       color: var(--ink-mid);
       background: var(--white);
       border: 1px solid var(--line);
-      padding: 10px 20px;
+      padding: 12px 24px;
       border-radius: 99px;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .chip:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
     }
 
     .chip i {
-      font-size: 1.2rem;
+      font-size: 1.4rem;
     }
 
     .chip.cb i {
@@ -312,6 +318,10 @@
 
     .chip.co i {
       color: var(--orange);
+    }
+
+    .chip.cn i {
+      color: #0288D1;
     }
 
     .chip.cp i {
@@ -820,8 +830,7 @@
   <nav>
     <div class="nav-logo">SerieB<span>Scanner</span></div>
     <div class="nav-pill">
-      <!-- SEO: LSI Context -->
-      <span class="sr-only">App de seguridad para dinero en </span>Efectivo
+      <span class="sr-only">App de seguridad para dinero en </span>V1.0.0
     </div>
   </nav>
 
@@ -830,7 +839,7 @@
     <div class="wrap">
       <div class="hero-label">
         <div class="pulse-dot"></div>
-        Actualizado hoy — Lunes 3 de marzo
+        Actualizado hoy — 2 de marzo
       </div>
 
       <!-- SEO: H1 Principal (Keyword principal de Alto Volumen y Breakout) -->
@@ -845,12 +854,12 @@
       <a href="https://github.com/TU_USUARIO/TU_REPO/releases/download/v1.0/serieb-scanner-v1.0.apk" class="btn-dl"
         title="Descargar la app para verificar billetes en Bolivia">
         <i class="ph-bold ph-android-logo" aria-hidden="true"></i>
-        Descargar Verificador BCB
+        Descargar Verificador de Billetes
       </a>
 
       <div class="dl-note">
         <i class="ph ph-seal-check" aria-hidden="true"></i>
-        <span>APK seguro y gratuito &middot; 24.5 MB &middot; Android 6.0+</span>
+        <span>APK seguro y gratuito &middot; 79.5 MB &middot; Android 5.0+</span>
       </div>
 
       <!-- SEO: Chips con palabras clave LSI y de Volumen -->
@@ -873,6 +882,10 @@
           <i class="ph ph-bank" aria-hidden="true"></i>
           <!-- KW: bcb -->
           <span>Datos del BCB</span>
+        </div>
+        <div class="chip cn">
+          <i class="ph-bold ph-wifi-slash" aria-hidden="true"></i>
+          <span>Sin conexión</span>
         </div>
       </div>
     </div>
@@ -1018,7 +1031,7 @@
             <div class="tl-body">
               <h3 class="sec-title-small">Descarga Directa</h3>
               <!-- SEO Keyword: verificador de billetes serie b -->
-              <div class="tl-desc">El verificador de billetes serie b oficial estará en tienda en aprox. 2 semanas.
+              <div class="tl-desc">El verificador de billetes serie B oficial estará en tienda en aprox. 2 semanas.
               </div>
             </div>
           </div>
@@ -1034,8 +1047,8 @@
         <!-- SEO Keyword: verificacion de billetes -->
         <p class="sec-body">Únete a nuestro grupo de WhatsApp para probar beta la <strong>verificacion de
             billetes</strong> y ayudar a otros negociantes a evitar estafas.</p>
-        <a href="https://chat.whatsapp.com/TU_GRUPO" class="btn-wa"
-          title="Únete a la comunidad del verificador de billetes serie b">
+        <a href="https://chat.whatsapp.com/KqD2t43FQApHIcmfUW3gJG" class="btn-wa"
+          title="Únete a la comunidad del verificador de billetes serie B">
           <i class="ph-fill ph-whatsapp-logo" aria-hidden="true"></i> Unirse a WhatsApp
         </a>
         <p style="font-size: .85rem; color: var(--ink-soft); margin-top: 16px; text-align: center;">Últimos cupos para
@@ -1050,9 +1063,9 @@
     <div class="tutorial-section">
       <div class="sec-tag">Tutorial de Uso</div>
       <!-- SEO H2 Breakout Query Formatted -->
-      <h2 class="sec-title">¿Cómo verificar los billetes de la serie b?</h2>
+      <h2 class="sec-title">¿Cómo verificar los billetes de la serie B?</h2>
       <p class="sec-body" style="max-width: 600px; margin: 0 auto;">La detección es inmediata. Sigue el video tutorial
-        para aprender a utilizar el <strong>verificador de billetes serie b</strong> correctamente.</p>
+        para aprender a utilizar el <strong>verificador de billetes serie B</strong> correctamente.</p>
 
       <div class="steps-grid">
         <div class="step">
@@ -1073,7 +1086,7 @@
         <div class="step">
           <div class="sicon s3"><i class="ph-bold ph-scan" aria-label="Paso 3: Escaneo"></i></div>
           <div>
-            <h3 class="sec-title-small">Escanea la serie b</h3>
+            <h3 class="sec-title-small">Escanea la serie B</h3>
             <div class="step-desc">Enfoca con tu cámara para realizar la <strong>verificación de billetes</strong>.
             </div>
           </div>
@@ -1095,7 +1108,7 @@
     <!-- SEO Keyword -->
     <h2 class="sec-title">Empieza a usar el Identificador de billetes</h2>
     <a href="https://github.com/TU_USUARIO/TU_REPO/releases/download/v1.0/serieb-scanner-v1.0.apk" class="btn-dl">
-      <i class="ph-bold ph-android-logo" aria-hidden="true"></i> Descargar Verificador BCB
+      <i class="ph-bold ph-android-logo" aria-hidden="true"></i> Descargar Verificador de Billetes
     </a>
     <!-- LSI context -->
     <p style="font-size:1rem; color:var(--ink-soft); margin-top:16px;">Vigila tus cobros en efectivo contra la
@@ -1106,7 +1119,7 @@
   <!-- FOOTER -->
   <footer>
     <div class="wrap">
-      <p><strong>Verificador de billetes serie b</strong> &middot; Bolivia &middot; 2026</p>
+      <p><strong>Verificador de billetes serie B</strong> &middot; Bolivia &middot; 2026</p>
       <!-- Disclaimer LSI (Banco central, BCB, bolivianos) -->
       <p style="margin-top:10px; font-size: .95rem;">Esta herramienta informática no representa legalmente al
         <strong>Banco Nacional de Bolivia</strong> ni al <strong>Banco Central de Bolivia (BCB)</strong>.<br />Consume
