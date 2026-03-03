@@ -28,7 +28,7 @@
   {
     "@context": "https://schema.org",
     "@type": "SoftwareApplication",
-    "name": "SerieB Scanner",
+    "name": "SerieB Escaner",
     "operatingSystem": "Android",
     "applicationCategory": "UtilitiesApplication",
     "offers": {
@@ -170,13 +170,13 @@
 
     /* ── HERO ── */
     .hero {
-      padding: 100px 0 80px;
+      padding: 40px 0 80px;
       text-align: center;
     }
 
     @media (max-width: 768px) {
       .hero {
-        padding: 60px 0 40px;
+        padding: 30px 0 40px;
       }
     }
 
@@ -292,13 +292,13 @@
     .chip {
       display: flex;
       align-items: center;
-      gap: 10px;
-      font-size: 1.1rem;
+      gap: 12px;
+      font-size: 1.25rem;
       font-weight: 500;
       color: var(--ink-mid);
       background: var(--white);
       border: 1px solid var(--line);
-      padding: 12px 24px;
+      padding: 16px 32px;
       border-radius: 99px;
       transition: transform 0.2s ease, box-shadow 0.2s ease;
     }
@@ -309,7 +309,7 @@
     }
 
     .chip i {
-      font-size: 1.4rem;
+      font-size: 1.8rem;
     }
 
     .chip.cb i {
@@ -658,171 +658,49 @@
       animation: reveal-right 1s ease-out forwards;
     }
 
-    /* ── CAROUSEL ── */
-    .carousel-container {
-      position: relative;
-      width: 100%;
-      overflow: hidden;
-      padding: 40px 0;
-    }
-
-    .carousel-track {
+    /* ── COUNTDOWN ── */
+    .countdown-container {
+      margin-top: 16px;
       display: flex;
-      transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1);
-      gap: 32px;
+      gap: 12px;
+      padding: 16px;
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: var(--rs);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+      justify-content: center;
+      max-width: fit-content;
     }
 
-    .carousel-item {
-      min-width: 100%;
-      flex-shrink: 0;
-      display: grid;
-      grid-template-columns: 1.2fr 1fr;
-      gap: 40px;
-      align-items: center;
-      background: rgba(255, 255, 255, 0.6);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      border: 1px solid rgba(255, 255, 255, 0.3);
-      border-radius: 32px;
-      padding: 40px;
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05);
-    }
-
-    @media (max-width: 900px) {
-      .carousel-item {
-        grid-template-columns: 1fr;
-        padding: 24px;
-        gap: 24px;
-      }
-
-      .carousel-track {
-        gap: 20px;
-      }
-    }
-
-    .bill-images {
+    .cd-item {
       display: flex;
       flex-direction: column;
-      gap: 16px;
-    }
-
-    .bill-img {
-      width: 100%;
-      max-height: 250px;
-      object-fit: contain;
-      background: #fdfaf8;
-      border-radius: 16px;
-      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
-      transition: transform 0.3s ease;
-    }
-
-    .bill-img:hover {
-      transform: scale(1.02);
-    }
-
-    .bill-info {
-      text-align: left;
-    }
-
-    .bill-title {
-      font-family: 'Fraunces', serif;
-      font-size: 2rem;
-      color: var(--ink);
-      margin-bottom: 12px;
-    }
-
-    .bill-ranges {
-      background: var(--white);
-      border-radius: 16px;
-      padding: 20px;
-      border: 1px solid var(--line);
-      max-height: 300px;
-      overflow-y: auto;
-    }
-
-    .range-tag {
-      display: inline-block;
-      padding: 4px 12px;
-      background: #ffeeee;
-      color: #d32f2f;
-      border-radius: 99px;
-      font-size: 0.85rem;
-      font-weight: 700;
-      margin-bottom: 8px;
-    }
-
-    .range-list {
-      list-style: none;
-    }
-
-    .range-item {
-      font-size: 0.9rem;
-      padding: 8px 0;
-      border-bottom: 1px solid #f0f0f0;
-      color: var(--ink-mid);
-    }
-
-    .range-item:last-child {
-      border-bottom: none;
-    }
-
-    .carousel-nav {
-      display: flex;
-      justify-content: center;
-      gap: 12px;
-      margin-top: 32px;
-    }
-
-    .dot {
-      width: 12px;
-      height: 12px;
-      border-radius: 50%;
-      background: var(--line);
-      cursor: pointer;
-      transition: background 0.3s, transform 0.3s;
-    }
-
-    .dot.active {
-      background: var(--brown);
-      transform: scale(1.3);
-    }
-
-    .carousel-btn {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      background: var(--white);
-      border: 1px solid var(--line);
-      width: 50px;
-      height: 50px;
-      border-radius: 50%;
-      display: flex;
       align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      z-index: 10;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-      transition: all 0.2s;
+      min-width: 45px;
     }
 
-    .carousel-btn:hover {
-      background: var(--brown-bg);
-      color: var(--brown);
-      transform: translateY(-50%) scale(1.1);
+    .cd-val {
+      font-family: 'Fraunces', serif;
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--orange);
+      line-height: 1;
     }
 
-    .btn-prev {
-      left: 10px;
+    .cd-lbl {
+      font-size: 0.7rem;
+      font-weight: 600;
+      color: var(--ink-soft);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-top: 4px;
     }
 
-    .btn-next {
-      right: 10px;
-    }
-
-    @media (max-width: 1100px) {
-      .carousel-btn {
-        display: none;
-      }
+    .cd-sep {
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--line);
+      padding-top: 2px;
     }
   </style>
 </head>
@@ -842,7 +720,7 @@
     <div class="wrap">
       <div class="hero-label">
         <div class="pulse-dot"></div>
-        Actualizado hoy — 2 de marzo
+        Actualizado hoy — <span id="current-date">2 de marzo</span>
       </div>
 
       <!-- SEO: H1 Principal (Keyword principal de Alto Volumen y Breakout) -->
@@ -854,8 +732,8 @@
         (BCB). Protege tus ventas al instante.</p>
 
       <!-- UX/SEO: Botón principal grande y legible -->
-      <a href="https://github.com/AlejandroSoftwaree/Detector-de-Billetes-Serie-B/releases/download/V1.0.0/DetectorBilletesBolivia.apk" class="btn-dl"
-        title="Descargar la app para verificar billetes en Bolivia">
+      <a href="https://github.com/AlejandroSoftwaree/Detector-de-Billetes-Serie-B/releases/download/V1.0.0/DetectorBilletesBolivia.apk"
+        class="btn-dl" title="Descargar la app para verificar billetes en Bolivia">
         <i class="ph-bold ph-android-logo" aria-hidden="true"></i>
         Descargar Verificador de Billetes
       </a>
@@ -867,9 +745,9 @@
 
       <!-- SEO: Chips con palabras clave LSI y de Volumen -->
       <div class="hero-chips">
-        <div class="chip cb">
-          <i class="ph-fill ph-shield-check" aria-hidden="true"></i>
-          <span>Mayor Seguridad</span>
+        <div class="chip cn">
+          <i class="ph-bold ph-wifi-slash" aria-hidden="true"></i>
+          <span>Funciona sin conexión a internet</span>
         </div>
         <div class="chip co">
           <i class="ph-bold ph-prohibit" aria-hidden="true"></i>
@@ -877,20 +755,46 @@
           <span>Billetes inhabilitados en bolivia</span>
         </div>
         <div class="chip cp">
-          <i class="ph ph-device-mobile-camera" aria-hidden="true"></i>
-          <!-- KW secundaria -->
-          <span>Reconocimiento por cámara</span>
+          <i class="ph-bold ph-camera" aria-hidden="true"></i>
+          <span>Reconocimiento de Muchos billetes a la vez</span>
         </div>
         <div class="chip cb">
           <i class="ph ph-bank" aria-hidden="true"></i>
           <!-- KW: bcb -->
           <span>Datos del BCB</span>
         </div>
-        <div class="chip cn">
-          <i class="ph-bold ph-wifi-slash" aria-hidden="true"></i>
-          <span>Sin conexión</span>
+        <div class="chip cb">
+          <i class="ph-fill ph-shield-check" aria-hidden="true"></i>
+          <span>Totalmente seguro</span>
         </div>
       </div>
+
+      <div style="margin-top: 40px; display: flex; flex-direction: column; align-items: center; gap: 12px;">
+        <span style="font-size: 1.1rem; color: var(--ink-mid); font-weight: 600;">Disponible en Play Store:</span>
+        <div class="countdown-container" id="playstore-countdown"
+          style="margin-top: 0; box-shadow: 0 4px 12px rgba(121, 85, 72, 0.08);">
+          <div class="cd-item">
+            <span class="cd-val" id="cd-days">14</span>
+            <span class="cd-lbl">Días</span>
+          </div>
+          <div class="cd-sep">:</div>
+          <div class="cd-item">
+            <span class="cd-val" id="cd-hours">00</span>
+            <span class="cd-lbl">Hrs</span>
+          </div>
+          <div class="cd-sep">:</div>
+          <div class="cd-item">
+            <span class="cd-val" id="cd-min">00</span>
+            <span class="cd-lbl">Min</span>
+          </div>
+          <div class="cd-sep">:</div>
+          <div class="cd-item">
+            <span class="cd-val" id="cd-sec">00</span>
+            <span class="cd-lbl">Seg</span>
+          </div>
+        </div>
+      </div>
+
     </div>
   </section>
 
@@ -1001,119 +905,13 @@
     </div>
   </section>
 
-  <div class="divider"></div>
-
-  <!-- CAROUSEL DE BILLETES INHABILITADOS -->
-  <section class="wrap scroll-section">
-    <div class="sec-tag" style="text-align: center;">Catálogo de Riesgo</div>
-    <h2 class="sec-title" style="text-align: center;">Series inhabilitadas por denominación</h2>
-    <p class="sec-body" style="text-align: center; max-width: 700px; margin: 0 auto 40px;">
-      Desliza para conocer los detalles técnicos y evidencia visual de los billetes que debes rechazar según el BCB.
-    </p>
-
-    <div class="carousel-container">
-      <button class="carousel-btn btn-prev" aria-label="Anterior"><i class="ph ph-caret-left"></i></button>
-      <button class="carousel-btn btn-next" aria-label="Siguiente"><i class="ph ph-caret-right"></i></button>
-
-      <div class="carousel-track">
-        <!-- BS 10 -->
-        <div class="carousel-item">
-          <div class="bill-images">
-            <img src="images/billete10.jpg" alt="Billete de 10" class="bill-img">
-            <img src="images/rango 10.jpeg" alt="Rango evidencia 10" class="bill-img">
-          </div>
-          <div class="bill-info">
-            <div class="range-tag">SERIE B INHABILITADA</div>
-            <h3 class="bill-title">Denominación Bs. 10</h3>
-            <p class="sec-body" style="margin-bottom: 20px;">Los billetes de esta denominación con los siguientes
-              rangos han sido retirados de circulación obligatoria.</p>
-            <div class="bill-ranges">
-              <ul class="range-list">
-                <li class="range-item"><strong>B 67.250.001</strong> al <strong>B 67.700.000</strong></li>
-                <li class="range-item"><strong>B 69.050.001</strong> al <strong>B 69.500.000</strong></li>
-                <li class="range-item"><strong>B 69.500.001</strong> al <strong>B 69.950.000</strong></li>
-                <li class="range-item"><strong>B 69.950.001</strong> al <strong>B 70.400.000</strong></li>
-                <li class="range-item"><strong>B 70.400.001</strong> al <strong>B 70.850.000</strong></li>
-                <li class="range-item"><strong>B 70.850.001</strong> al <strong>B 71.300.000</strong></li>
-                <li class="range-item"><strong>B 76.310.012</strong> al <strong>B 85.139.995</strong></li>
-                <li class="range-item"><strong>B 86.400.001</strong> al <strong>B 86.850.000</strong></li>
-                <li class="range-item"><strong>B 90.900.001</strong> al <strong>B 91.350.000</strong></li>
-                <li class="range-item"><strong>B 91.800.001</strong> al <strong>B 92.250.000</strong></li>
-              </ul>
-            </div>
-          </div>
-        </div>
-
-        <!-- BS 20 -->
-        <div class="carousel-item">
-          <div class="bill-images">
-            <img src="images/billete20.jpg" alt="Billete de 20" class="bill-img">
-            <img src="images/rango 20.jpeg" alt="Rango evidencia 20" class="bill-img">
-          </div>
-          <div class="bill-info">
-            <div class="range-tag" style="background:#fff3ec; color:#E65100;">SERIE B INHABILITADA</div>
-            <h3 class="bill-title">Denominación Bs. 20</h3>
-            <p class="sec-body" style="margin-bottom: 20px;">Series identificadas como inhabilitadas para los billetes
-              de
-              Bs. 20.</p>
-            <div class="bill-ranges">
-              <ul class="range-list">
-                <li class="range-item"><strong>B 87.280.145</strong> al <strong>B 91.646.549</strong></li>
-                <li class="range-item"><strong>B 96.650.001</strong> al <strong>B 97.100.000</strong></li>
-                <li class="range-item"><strong>B 99.800.001</strong> al <strong>B 100.250.000</strong></li>
-                <li class="range-item"><strong>B 109.250.001</strong> al <strong>B 109.700.000</strong></li>
-                <li class="range-item"><strong>B 110.600.001</strong> al <strong>B 111.050.000</strong></li>
-                <li class="range-item"><strong>B 111.050.001</strong> al <strong>B 111.500.000</strong></li>
-                <li class="range-item"><strong>B 111.950.001</strong> al <strong>B 112.400.000</strong></li>
-                <li class="range-item"><strong>B 112.400.001</strong> al <strong>B 112.850.000</strong></li>
-                <li class="range-item"><strong>B 112.850.001</strong> al <strong>B 113.300.000</strong></li>
-              </ul>
-            </div>
-          </div>
-        </div>
-
-        <!-- BS 50 -->
-        <div class="carousel-item">
-          <div class="bill-images">
-            <img src="images/billete50.jpg" alt="Billete de 50" class="bill-img">
-            <img src="images/rango 50.jpeg" alt="Rango evidencia 50" class="bill-img">
-          </div>
-          <div class="bill-info">
-            <div class="range-tag" style="background:#f3eaf8; color:#6A1B9A;">SERIE B INHABILITADA</div>
-            <h3 class="bill-title">Denominación Bs. 50</h3>
-            <p class="sec-body" style="margin-bottom: 20px;">Tome precauciones extremas con estos rangos en la
-              denominación de Bs. 50.</p>
-            <div class="bill-ranges">
-              <ul class="range-list">
-                <li class="range-item"><strong>B 77.100.001</strong> al <strong>B 77.550.000</strong></li>
-                <li class="range-item"><strong>B 78.000.001</strong> al <strong>B 78.450.000</strong></li>
-                <li class="range-item"><strong>B 78.900.001</strong> al <strong>B 96.350.000</strong></li>
-                <li class="range-item"><strong>B 96.350.001</strong> al <strong>B 96.800.000</strong></li>
-                <li class="range-item"><strong>B 96.800.001</strong> al <strong>B 97.250.000</strong></li>
-                <li class="range-item"><strong>B 104.900.001</strong> al <strong>B 105.350.000</strong></li>
-                <li class="range-item"><strong>B 105.350.001</strong> al <strong>B 105.800.000</strong></li>
-                <li class="range-item"><strong>B 106.700.001</strong> al <strong>B 107.150.000</strong></li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="carousel-nav">
-        <div class="dot active"></div>
-        <div class="dot"></div>
-        <div class="dot"></div>
-      </div>
-    </div>
-  </section>
-
-
   <!-- SECOND CTA -->
   <div class="divider"></div>
   <section class="wrap scroll-section" style="text-align:center; margin-bottom:100px;">
     <!-- SEO Keyword -->
     <h2 class="sec-title">Empieza a usar el Identificador de billetes</h2>
-    <a href="https://github.com/AlejandroSoftwaree/Detector-de-Billetes-Serie-B/releases/download/V1.0.0/DetectorBilletesBolivia.apk" class="btn-dl">
+    <a href="https://github.com/AlejandroSoftwaree/Detector-de-Billetes-Serie-B/releases/download/V1.0.0/DetectorBilletesBolivia.apk"
+      class="btn-dl">
       <i class="ph-bold ph-android-logo" aria-hidden="true"></i> Descargar Verificador de Billetes
     </a>
     <!-- LSI context -->
@@ -1146,46 +944,41 @@
 
     document.querySelectorAll('.scroll-section').forEach(el => obs.observe(el));
 
-    // CAROUSEL LOGIC
-    const track = document.querySelector('.carousel-track');
-    const items = document.querySelectorAll('.carousel-item');
-    const dots = document.querySelectorAll('.dot');
-    const prevBtn = document.querySelector('.btn-prev');
-    const nextBtn = document.querySelector('.btn-next');
-    let currentIndex = 0;
 
-    const updateCarousel = () => {
-      track.style.transform = `translateX(-${currentIndex * 100}%)`;
-      dots.forEach((dot, i) => {
-        dot.classList.toggle('active', i === currentIndex);
-      });
-    };
+    // DATE UPDATER
+    const dateOptions = { day: 'numeric', month: 'long' };
+    const today = new Date();
+    document.getElementById('current-date').innerText = today.toLocaleDateString('es-ES', dateOptions);
 
-    nextBtn.addEventListener('click', () => {
-      currentIndex = (currentIndex + 1) % items.length;
-      updateCarousel();
-    });
+    // COUNTDOWN TIMER
+    function startCountdown(durationDays) {
+      const countdownDate = new Date().getTime() + (durationDays * 24 * 60 * 60 * 1000);
 
-    prevBtn.addEventListener('click', () => {
-      currentIndex = (currentIndex - 1 + items.length) % items.length;
-      updateCarousel();
-    });
+      const update = () => {
+        const now = new Date().getTime();
+        const distance = countdownDate - now;
 
-    dots.forEach((dot, i) => {
-      dot.addEventListener('click', () => {
-        currentIndex = i;
-        updateCarousel();
-      });
-    });
+        if (distance < 0) {
+          document.getElementById('playstore-countdown').innerHTML = "¡Disponible ahora en Play Store!";
+          return;
+        }
 
-    // Soporte para swipe básico
-    let touchStartX = 0;
-    track.addEventListener('touchstart', e => { touchStartX = e.touches[0].clientX; });
-    track.addEventListener('touchend', e => {
-      const touchEndX = e.changedTouches[0].clientX;
-      if (touchStartX - touchEndX > 50) nextBtn.click();
-      if (touchStartX - touchEndX < -50) prevBtn.click();
-    });
+        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+        document.getElementById('cd-days').innerText = days;
+        document.getElementById('cd-hours').innerText = hours.toString().padStart(2, '0');
+        document.getElementById('cd-min').innerText = minutes.toString().padStart(2, '0');
+        document.getElementById('cd-sec').innerText = seconds.toString().padStart(2, '0');
+      };
+
+      update();
+      setInterval(update, 1000);
+    }
+
+    startCountdown(14);
   </script>
 </body>
 
