@@ -9,12 +9,12 @@
 
   <!-- SEO: Meta Description (~155 chars) usando Breakout query, intent y CTA -->
   <meta name="description"
-    content="¿Cómo verificar los billetes de la serie b? Descarga el verificador de billetes falsos e inhabilitados por el BCB en Bolivia. ¡Protege tu dinero hoy!" />
+    content="¿Cómo verificar los billetes de la serie b? Descarga el verificador de billetes sin validez e inhabilitados por el BCB en Bolivia. ¡Protege tu dinero hoy!" />
 
   <!-- SEO: OpenGraph -->
   <meta property="og:title" content="Verificador de Billetes Serie B | App Bolivia" />
   <meta property="og:description"
-    content="¿Cómo verificar los billetes de la serie b? Descarga el verificador de billetes falsos e inhabilitados por el BCB en Bolivia. ¡Protege tu dinero hoy!" />
+    content="¿Cómo verificar los billetes de la serie b? Descarga el verificador de billetes sin validez e inhabilitados por el BCB en Bolivia. ¡Protege tu dinero hoy!" />
   <meta property="og:image" content="https://placehold.co/1200x630/795548/ffffff?text=Verificador+Serie+B" />
   <meta property="og:type" content="website" />
   <meta name="twitter:card" content="summary_large_image" />
@@ -36,7 +36,7 @@
       "price": "0",
       "priceCurrency": "BOB"
     },
-    "description": "Aplicacion para verificar billetes de la serie b en Bolivia. Identificador rápido de billetes falsos e inhabilitados por el banco central de bolivia utilizando la cámara."
+    "description": "Aplicacion para verificar billetes de la serie b en Bolivia. Identificador rápido de billetes sin validez e inhabilitados por el banco central de bolivia utilizando la cámara."
   }
   </script>
 
@@ -729,7 +729,8 @@
 
       <!-- SEO: Inyección de LSI y top volume (bcb verificador de billetes, billetes bolivianos, comercio) -->
       <p class="hero-sub">La <strong>aplicación para verificar billetes</strong> más confiable para el comercio en
-        Bolivia. Funciona como un <strong>identificador de billetes falsos</strong> e inhabilitados por el banco central
+        Bolivia. Funciona como un <strong>identificador de billetes sin validez</strong> e inhabilitados por el banco
+        central
         (BCB). Protege tus ventas al instante.</p>
 
       <!-- UX/SEO: Botón principal grande y legible -->
@@ -750,14 +751,14 @@
           <i class="ph-bold ph-wifi-slash" aria-hidden="true"></i>
           <span>Funciona sin conexión a internet</span>
         </div>
-        <div class="chip co">
-          <i class="ph-bold ph-prohibit" aria-hidden="true"></i>
-          <!-- KW LSI -->
-          <span>Billetes inhabilitados en bolivia</span>
-        </div>
         <div class="chip cp">
           <i class="ph-bold ph-camera" aria-hidden="true"></i>
           <span>Reconocimiento de Muchos billetes a la vez</span>
+        </div>
+        <div class="chip co">
+          <i class="ph-bold ph-prohibit" aria-hidden="true"></i>
+          <!-- KW LSI -->
+          <span>Billetes inhabilitados</span>
         </div>
         <div class="chip cb">
           <i class="ph ph-bank" aria-hidden="true"></i>
@@ -952,12 +953,14 @@
     document.getElementById('current-date').innerText = today.toLocaleDateString('es-ES', dateOptions);
 
     // COUNTDOWN TIMER
-    function startCountdown(durationDays) {
-      const countdownDate = new Date().getTime() + (durationDays * 24 * 60 * 60 * 1000);
+    // Variable con la fecha de lanzamiento (evita que se resetee al actualizar)
+    // Formato: AAAA-MM-DDTHH:mm:ss
+    const fechaLanzamiento = new Date("2026-03-20T00:00:00").getTime();
 
+    function startCountdown() {
       const update = () => {
         const now = new Date().getTime();
-        const distance = countdownDate - now;
+        const distance = fechaLanzamiento - now;
 
         if (distance < 0) {
           document.getElementById('playstore-countdown').innerHTML = "¡Disponible ahora en Play Store!";
@@ -979,7 +982,7 @@
       setInterval(update, 1000);
     }
 
-    startCountdown(14);
+    startCountdown();
   </script>
 </body>
 
